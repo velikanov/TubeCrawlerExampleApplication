@@ -1,0 +1,13 @@
+{% extends "VelikanTubeCrawlerBundle::base.html.twig" %}
+
+{% block heading %}
+    <h1>{{ heading }}</h1>
+{% endblock %}
+
+{% block body %}
+    {{ form(form) }}
+
+    <div>
+        <a href="{{ path(crud_path ~ 'index') }}">Back to list</a>
+    </div>
+{% endblock %}

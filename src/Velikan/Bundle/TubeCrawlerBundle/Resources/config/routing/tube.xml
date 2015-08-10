@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="velikan_tube_crawler_tube_index" path="/index" methods="GET">
+        <default key="_controller">VelikanTubeCrawlerBundle:Tube:index</default>
+    </route>
+
+    <route id="velikan_tube_crawler_tube_new" path="/new" methods="GET">
+        <default key="_controller">VelikanTubeCrawlerBundle:Tube:new</default>
+    </route>
+    <route id="velikan_tube_crawler_tube_create" path="/create" methods="POST">
+        <default key="_controller">VelikanTubeCrawlerBundle:Tube:create</default>
+    </route>
+
+    <route id="velikan_tube_crawler_tube_edit" path="/edit/{id}" methods="GET">
+        <default key="_controller">VelikanTubeCrawlerBundle:Tube:edit</default>
+    </route>
+    <route id="velikan_tube_crawler_tube_update" path="/update/{id}" methods="PUT">
+        <default key="_controller">VelikanTubeCrawlerBundle:Tube:update</default>
+    </route>
+
+    <route id="velikan_tube_crawler_tube_delete" path="/delete/{id}" methods="GET">
+        <default key="_controller">VelikanTubeCrawlerBundle:Tube:delete</default>
+    </route>
+</routes>

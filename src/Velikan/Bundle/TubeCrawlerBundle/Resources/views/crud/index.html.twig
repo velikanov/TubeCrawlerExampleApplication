@@ -1,0 +1,25 @@
+{% extends "VelikanTubeCrawlerBundle::base.html.twig" %}
+
+{% block heading %}
+    <h1>{{ heading }}</h1>
+{% endblock %}
+
+{% block body %}
+    <table>
+        {% for entity in entities %}
+            <tr>
+                <td>
+                    {{ entity }}
+                </td>
+                <td>
+                    <a href="{{ path(crud_path ~ 'edit', {id: entity.id}) }}">Edit</a> |
+                    <a href="{{ path(crud_path ~ 'delete', {id: entity.id}) }}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <div>
+        <a href="{{ path(crud_path ~ 'new') }}">Add new</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,7 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+velikan_tube_crawler:
+    resource: "@VelikanTubeCrawlerBundle/Resources/config/routing/all.xml"

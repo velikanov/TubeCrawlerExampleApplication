@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="velikan_tube_crawler_video_index" path="/index" methods="GET">
+        <default key="_controller">VelikanTubeCrawlerBundle:Video:index</default>
+    </route>
+
+    <route id="velikan_tube_crawler_video_new" path="/new" methods="GET">
+        <default key="_controller">VelikanTubeCrawlerBundle:Video:new</default>
+    </route>
+    <route id="velikan_tube_crawler_video_create" path="/create" methods="POST">
+        <default key="_controller">VelikanTubeCrawlerBundle:Video:create</default>
+    </route>
+
+    <route id="velikan_tube_crawler_video_edit" path="/edit/{id}" methods="GET">
+        <default key="_controller">VelikanTubeCrawlerBundle:Video:edit</default>
+    </route>
+    <route id="velikan_tube_crawler_video_update" path="/update/{id}" methods="PUT">
+        <default key="_controller">VelikanTubeCrawlerBundle:Video:update</default>
+    </route>
+
+    <route id="velikan_tube_crawler_video_delete" path="/delete/{id}" methods="GET">
+        <default key="_controller">VelikanTubeCrawlerBundle:Video:delete</default>
+    </route>
+</routes>

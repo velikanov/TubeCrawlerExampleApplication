@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="velikan_tube_crawler.tube_manager.default" class="Velikan\Bundle\TubeCrawlerBundle\Doctrine\TubeManager" public="false">
+            <argument type="service" id="velikan_tube_crawler.entity_manager" />
+            <argument>%velikan_tube_crawler.model.tube.class%</argument>
+        </service>
+        <service id="velikan_tube_crawler.video_manager.default" class="Velikan\Bundle\TubeCrawlerBundle\Doctrine\VideoManager" public="false">
+            <argument type="service" id="velikan_tube_crawler.entity_manager" />
+            <argument>%velikan_tube_crawler.model.video.class%</argument>
+        </service>
+
+        <service id="velikan_tube_crawler.entity_manager" class="Doctrine\ORM\EntityManager" public="false">
+            <argument>%velikan_tube_crawler.model_manager_name%</argument>
+        </service>
+    </services>
+
+</container>

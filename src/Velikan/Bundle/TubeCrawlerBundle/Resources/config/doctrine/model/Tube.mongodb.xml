@@ -12,6 +12,10 @@
         <field name="urn" fieldName="urn" type="string" />
         <field name="canFetchMultithreaded" fieldName="can_fetch_multithreaded" type="boolean" />
         <field name="threadCount" fieldName="thread_count" type="integer" />
+        <field name="videoBlockSelector" fieldName="video_block_selector" type="string" />
+        <field name="videoUriSelector" fieldName="video_uri_selector" type="string" />
+        <field name="videoImageSelector" fieldName="video_image_selector" type="string" />
+        <field name="videoTitleSelector" fieldName="video_title_selector" type="string" />
     </mapped-superclass>
 
 </doctrine-mongo-mapping>

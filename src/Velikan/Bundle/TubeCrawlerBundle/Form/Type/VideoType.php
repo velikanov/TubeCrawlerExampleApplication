@@ -15,6 +15,8 @@ class VideoType extends AbstractType
             ->add('tube', 'entity', [
                 'class' => 'Velikan\Bundle\TubeCrawlerBundle\Model\Tube',
             ])
+            ->add('videoUri', 'textarea')
+            ->add('imageUri', 'textarea')
         ;
     }
 

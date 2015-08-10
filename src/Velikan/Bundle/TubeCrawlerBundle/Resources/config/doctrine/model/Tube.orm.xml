@@ -32,6 +32,10 @@
                 <option name="default">1</option>
             </options>
         </field>
+        <field name="videoBlockSelector" column="video_block_selector" type="text" nullable="false" />
+        <field name="videoUriSelector" column="video_uri_selector" type="text" nullable="false" />
+        <field name="videoImageSelector" column="video_image_selector" type="text" nullable="false" />
+        <field name="videoTitleSelector" column="video_title_selector" type="text" nullable="false" />
     </mapped-superclass>
 
 </doctrine-mapping>

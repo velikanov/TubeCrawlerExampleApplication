@@ -3,6 +3,7 @@
 namespace Velikan\Bundle\TubeCrawlerBundle\Command;
 
 use AppBundle\Entity\Tube;
+use AppBundle\Entity\Video;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -39,20 +40,52 @@ class FetchVideoCommand extends ContainerAwareCommand
     {
         $container = $this->getContainer();
 
-        $tubeManager = $container->get('velikan_tube_crawler.tube_manipulator');
+        $tubeManipulator = $container->get('velikan_tube_crawler.tube_manipulator');
 
         $tubes = [];
 
         if ($tubeId = $input->hasArgument('tube-id')) {
-            $tubes[] = $tubeManager->find($tubeId);
+            $tubes[] = $tubeManipulator->find($tubeId);
         } else {
-            $tubes = $tubeManager->findAll();
+            $tubes = $tubeManipulator->findAll();
         }
 
         $uriFetchAdapter = $container->get('velikan_tube_crawler.uri_fetch_adapter');
 
+        $parsedVideoCounter = 0;
+        $videoParser = $container->get('velikan_tube_crawler.video_parser');
+        /** @var Tube $tube */
+        $tube = null;
+
+        $fetchAdapterFunction = function($responseBody, $pageIndex) use (&$tube, $tubeManipulator, $videoParser, $output, &$parsedVideoCounter) {
+            $videos = $videoParser->parse(
+                $responseBody,
+                $tube->getVideoBlockSelector(),
+                $tube->getVideoUriSelector(),
+                $tube->getVideoImageSelector(),
+                $tube->getVideoTitleSelector()
+            );
+
+            foreach ($videos as $parsedVideo) {
+                $video = new Video();
+
+                $video->setTube($tube);
+                $video->setVideoUri($parsedVideo['uri']);
+                $video->setImageUri($parsedVideo['image']);
+                $video->setTitle($parsedVideo['title']);
+
+                $tubeManipulator->testAndCreateVideo($video);
+            }
+
+            $parsedVideoCounter += count($videos);
+
+            $output->writeln(sprintf('Parsed %d videos for page %d (%d overall)', count($videos), $pageIndex, $parsedVideoCounter));
+        };
+
         /** @var Tube $tube */
         foreach ($tubes as $tube) {
+
+
             $output->writeln('Fetching videos for <info>'.$tube->getName().'</info>');
 
             $routeCollection = new RouteCollection();
@@ -70,7 +103,7 @@ class FetchVideoCommand extends ContainerAwareCommand
                 $uriFetchAdapter->addUri($uri);
             }
 
-            $uriFetchAdapter->fetch($tube->getCanFetchMultithreaded(), $tube->getThreadCount());
+            $uriFetchAdapter->fetch($fetchAdapterFunction, $tube->getCanFetchMultithreaded(), $tube->getThreadCount());
         }
     }
 }

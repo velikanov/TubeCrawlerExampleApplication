@@ -75,6 +75,34 @@ class Tube
      */
     protected $threadCount = 1;
 
+    /**
+     * Videos page video block selector
+     *
+     * @var string
+     */
+    protected $videoBlockSelector;
+
+    /**
+     * Videos page video URI selector
+     *
+     * @var string
+     */
+    protected $videoUriSelector;
+
+    /**
+     * Videos page video image selector
+     *
+     * @var string
+     */
+    protected $videoImageSelector;
+
+    /**
+     * Videos page video title selector
+     *
+     * @var string
+     */
+    protected $videoTitleSelector;
+
 
     /**
      * @return mixed
@@ -214,6 +242,82 @@ class Tube
     public function setThreadCount($threadCount)
     {
         $this->threadCount = $threadCount;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVideoBlockSelector()
+    {
+        return $this->videoBlockSelector;
+    }
+
+    /**
+     * @param string $videoBlockSelector
+     * @return Tube
+     */
+    public function setVideoBlockSelector($videoBlockSelector)
+    {
+        $this->videoBlockSelector = $videoBlockSelector;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVideoUriSelector()
+    {
+        return $this->videoUriSelector;
+    }
+
+    /**
+     * @param string $videoUriSelector
+     * @return Tube
+     */
+    public function setVideoUriSelector($videoUriSelector)
+    {
+        $this->videoUriSelector = $videoUriSelector;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVideoImageSelector()
+    {
+        return $this->videoImageSelector;
+    }
+
+    /**
+     * @param string $videoImageSelector
+     * @return Tube
+     */
+    public function setVideoImageSelector($videoImageSelector)
+    {
+        $this->videoImageSelector = $videoImageSelector;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVideoTitleSelector()
+    {
+        return $this->videoTitleSelector;
+    }
+
+    /**
+     * @param mixed $videoTitleSelector
+     * @return Tube
+     */
+    public function setVideoTitleSelector($videoTitleSelector)
+    {
+        $this->videoTitleSelector = $videoTitleSelector;
+
+        return $this;
     }
 
 

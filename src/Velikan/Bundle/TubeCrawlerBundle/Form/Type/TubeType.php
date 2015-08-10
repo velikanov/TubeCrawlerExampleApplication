@@ -18,6 +18,12 @@ class TubeType extends AbstractType
             ->add('host', 'text')
             ->add('urn', 'text')
             ->add('startingPageNumber', 'integer')
+            ->add('canFetchMultithreaded', 'checkbox')
+            ->add('threadCount', 'integer')
+            ->add('videoBlockSelector', 'textarea')
+            ->add('videoUriSelector', 'textarea')
+            ->add('videoImageSelector', 'textarea')
+            ->add('videoTitleSelector', 'textarea')
         ;
     }
 

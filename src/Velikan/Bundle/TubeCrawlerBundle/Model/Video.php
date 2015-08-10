@@ -32,6 +32,20 @@ class Video
      */
     protected $title;
 
+    /**
+     * Video URI on Tube
+     *
+     * @var string
+     */
+    protected $videoUri;
+
+    /**
+     * Video image URI
+     *
+     * @var string
+     */
+    protected $imageUri;
+
 
     /**
      * @return mixed
@@ -78,6 +92,45 @@ class Video
 
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getVideoUri()
+    {
+        return $this->videoUri;
+    }
+
+    /**
+     * @param string $videoUri
+     * @return Video
+     */
+    public function setVideoUri($videoUri)
+    {
+        $this->videoUri = $videoUri;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImageUri()
+    {
+        return $this->imageUri;
+    }
+
+    /**
+     * @param string $imageUri
+     * @return Video
+     */
+    public function setImageUri($imageUri)
+    {
+        $this->imageUri = $imageUri;
+
+        return $this;
+    }
+
 
     public function __toString()
     {

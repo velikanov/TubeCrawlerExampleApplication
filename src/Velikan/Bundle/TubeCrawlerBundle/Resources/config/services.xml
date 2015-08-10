@@ -18,9 +18,10 @@
         </service>
 
         <service id="velikan_tube_crawler.uri_fetch_adapter" class="Velikan\Bundle\TubeCrawlerBundle\Adapter\UriFetchAdapter">
-            <argument type="service" id="guzzle.client" />
             <argument type="service" id="buzz" />
         </service>
+
+        <service id="velikan_tube_crawler.video_parser" class="Velikan\Bundle\TubeCrawlerBundle\Parser\VideoParser" />
     </services>
 
 </container>

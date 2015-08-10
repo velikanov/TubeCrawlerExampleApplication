@@ -14,6 +14,9 @@
         <many-to-one target-entity="Velikan\Bundle\TubeCrawlerBundle\Model\Tube" field="tube">
             <join-column name="tube_id" referenced-column-name="id" nullable="false" />
         </many-to-one>
+
+        <field name="videoUri" column="video_uri" type="text" nullable="true" />
+        <field name="imageUri" column="image_uri" type="text" nullable="true" />
     </mapped-superclass>
 
 </doctrine-mapping>
